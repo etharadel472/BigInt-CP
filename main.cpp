@@ -73,7 +73,62 @@ public:
     // ==================== START MEMBER 4 (Addition - Part 1) ====================
     // Addition assignment operator (x += y)
     BigInt& operator+=(const BigInt& other) {
-        // TODO: Implement this operator
+        string result;
+
+        if (isNegative == other.isNegative) {
+            int i = static_cast<int>(number.size()) - 1;
+            int j = static_cast<int>(other.number.size()) - 1;
+            int carry = 0;
+
+            while (i >= 0 || j >= 0 || carry != 0) {
+                int sum = carry;
+
+                if (i >= 0)
+                    sum += number[i--] - '0';
+
+                if (j >= 0)
+                    sum += other.number[j--] - '0';
+
+                result = char('0' + sum % 10) + result;
+                carry = sum / 10;
+            }
+        } else {
+            int comparison = compareMagnitude(other);
+
+            if (comparison == 0) {
+                number = "0";
+                isNegative = false;
+                return *this;
+            }
+
+            const string& larger = comparison > 0 ? number : other.number;
+            const string& smaller = comparison > 0 ? other.number : number;
+            bool resultNegative = comparison > 0 ? isNegative : other.isNegative;
+            int i = static_cast<int>(larger.size()) - 1;
+            int j = static_cast<int>(smaller.size()) - 1;
+            int borrow = 0;
+
+            while (i >= 0) {
+                int digit = larger[i--] - '0' - borrow;
+
+                if (j >= 0)
+                    digit -= smaller[j--] - '0';
+
+                borrow = 0;
+
+                if (digit < 0) {
+                    digit += 10;
+                    borrow = 1;
+                }
+
+                result = char('0' + digit) + result;
+            }
+
+            isNegative = resultNegative;
+        }
+
+        number = result;
+        removeLeadingZeros();
         return *this;
     }
     // ===================== END MEMBER 4 (Addition - Part 1) =====================
@@ -115,14 +170,14 @@ public:
     // ==================== START MEMBER 4 (Addition - Part 2) ====================
     // Pre-increment operator (++x)
     BigInt& operator++() {
-        // TODO: Implement this operator
+        *this += BigInt(1);
         return *this;
     }
 
     // Post-increment operator (x++)
     BigInt operator++(int) {
-        BigInt temp;
-        // TODO: Implement this operator
+        BigInt temp(*this);
+        ++(*this);
         return temp;
     }
     // ===================== END MEMBER 4 (Addition - Part 2) =====================
@@ -173,9 +228,8 @@ public:
 // ==================== START MEMBER 4 (Addition - Part 3) ====================
 // Binary addition operator (x + y)
 BigInt operator+(BigInt lhs, const BigInt& rhs) {
-    BigInt result;
-    // TODO: Implement this operator
-    return result;
+    lhs += rhs;
+    return lhs;
 }
 // ===================== END MEMBER 4 (Addition - Part 3) =====================
 
