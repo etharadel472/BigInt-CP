@@ -6,6 +6,7 @@ class BigInt {
     string number;    // Stores the number as a string
     bool isNegative;  // True if number is negative
 
+    // ==================== START MEMBER 1 (Core & Setup) ====================
     // Remove unnecessary leading zeros from the number string
     void removeLeadingZeros() {
         // TODO: Implement this function
@@ -49,7 +50,10 @@ public:
         // TODO: Implement this operator
         return *this;
     }
+    // ===================== END MEMBER 1 (Core & Setup) =====================
 
+
+    // ================= START MEMBER 2 (Streams & Unary - Part 1) =================
     // Unary negation operator (-x)
     BigInt operator-() const {
         BigInt result;
@@ -63,25 +67,37 @@ public:
         // TODO: Implement this operator
         return result;
     }
+    // ================== END MEMBER 2 (Streams & Unary - Part 1) ==================
 
+
+    // ==================== START MEMBER 4 (Addition - Part 1) ====================
     // Addition assignment operator (x += y)
     BigInt& operator+=(const BigInt& other) {
         // TODO: Implement this operator
         return *this;
     }
+    // ===================== END MEMBER 4 (Addition - Part 1) =====================
 
+
+    // =================== START MEMBER 5 (Subtraction - Part 1) ===================
     // Subtraction assignment operator (x -= y)
     BigInt& operator-=(const BigInt& other) {
         // TODO: Implement this operator
         return *this;
     }
+    // ==================== END MEMBER 5 (Subtraction - Part 1) ====================
 
+
+    // ================= START MEMBER 6 (Multiplication - Part 1) =================
     // Multiplication assignment operator (x *= y)
     BigInt& operator*=(const BigInt& other) {
         // TODO: Implement this operator
         return *this;
     }
+    // ================== END MEMBER 6 (Multiplication - Part 1) ==================
 
+
+    // ================= START MEMBER 7 (Division & Mod - Part 1) =================
     // Division assignment operator (x /= y)
     BigInt& operator/=(const BigInt& other) {
         // TODO: Implement this operator
@@ -93,7 +109,10 @@ public:
         // TODO: Implement this operator
         return *this;
     }
+    // ================== END MEMBER 7 (Division & Mod - Part 1) ==================
 
+
+    // ==================== START MEMBER 4 (Addition - Part 2) ====================
     // Pre-increment operator (++x)
     BigInt& operator++() {
         // TODO: Implement this operator
@@ -106,7 +125,10 @@ public:
         // TODO: Implement this operator
         return temp;
     }
+    // ===================== END MEMBER 4 (Addition - Part 2) =====================
 
+
+    // =================== START MEMBER 5 (Subtraction - Part 2) ===================
     // Pre-decrement operator (--x)
     BigInt& operator--() {
         // TODO: Implement this operator
@@ -119,7 +141,10 @@ public:
         // TODO: Implement this operator
         return temp;
     }
+    // ==================== END MEMBER 5 (Subtraction - Part 2) ====================
 
+
+    // ================= START MEMBER 2 (Streams & Unary - Part 2) =================
     // Convert BigInt to string representation
     string toString() const {
         // TODO: Implement this function
@@ -137,33 +162,45 @@ public:
         // TODO: Implement this operator
         return is;
     }
+    // ================== END MEMBER 2 (Streams & Unary - Part 2) ==================
 
     // Friend declarations for comparison operators
     friend bool operator==(const BigInt& lhs, const BigInt& rhs);
     friend bool operator<(const BigInt& lhs, const BigInt& rhs);
 };
 
+
+// ==================== START MEMBER 4 (Addition - Part 3) ====================
 // Binary addition operator (x + y)
 BigInt operator+(BigInt lhs, const BigInt& rhs) {
     BigInt result;
     // TODO: Implement this operator
     return result;
 }
+// ===================== END MEMBER 4 (Addition - Part 3) =====================
 
+
+// =================== START MEMBER 5 (Subtraction - Part 3) ===================
 // Binary subtraction operator (x - y)
 BigInt operator-(BigInt lhs, const BigInt& rhs) {
     BigInt result;
     // TODO: Implement this operator
     return result;
 }
+// ==================== END MEMBER 5 (Subtraction - Part 3) ====================
 
+
+// ================= START MEMBER 6 (Multiplication - Part 2) =================
 // Binary multiplication operator (x * y)
 BigInt operator*(BigInt lhs, const BigInt& rhs) {
     BigInt result;
     // TODO: Implement this operator
     return result;
 }
+// ================== END MEMBER 6 (Multiplication - Part 2) ==================
 
+
+// ================= START MEMBER 7 (Division & Mod - Part 2) =================
 // Binary division operator (x / y)
 BigInt operator/(BigInt lhs, const BigInt& rhs) {
     BigInt result;
@@ -177,7 +214,10 @@ BigInt operator%(BigInt lhs, const BigInt& rhs) {
     // TODO: Implement this operator
     return result;
 }
+// ================== END MEMBER 7 (Division & Mod - Part 2) ==================
 
+
+// ======================= START MEMBER 3 (Comparisons) =======================
 // Equality comparison operator (x == y)
 bool operator==(const BigInt& lhs, const BigInt& rhs) {
     // TODO: Implement this operator
@@ -213,6 +253,8 @@ bool operator>=(const BigInt& lhs, const BigInt& rhs) {
     // TODO: Implement this operator
     return false;
 }
+// ======================== END MEMBER 3 (Comparisons) ========================
+
 
 int main() {
     cout << "=== BigInt Class Test Program ===" << endl << endl;
